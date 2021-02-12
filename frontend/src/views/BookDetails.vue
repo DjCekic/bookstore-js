@@ -11,7 +11,7 @@
             <b-button v-b-toggle.collapse-2 class="m-1" style="width: 100%;">Opis</b-button>
             <br/><br/><br/>
             <b-collapse id="collapse-2">
-                <b-card style="background-color: #353535">{{book.decription}}</b-card>
+                <b-card style="background-color: #353535">{{book.description}}</b-card>
             </b-collapse>
             <br/><br/><br/><br/><br/><br/><hr/>
             <h5 class="info" style="background-color: #353535">Cena: <span style="opacity: 0.7;">{{book.price}}.00 rsd</span></h5>

@@ -8,6 +8,7 @@ const app = express();
 app.use(express.static('public'));
 app.use(cors())
 app.use(bodyParser.json());
+app.use('/api', require('./routes/histories')); /* initalizing routes */
 app.use('/api', require('./routes/books')); /* initalizing routes */
 app.use('/api', require('./routes/users')); /* initalizing routes */
 

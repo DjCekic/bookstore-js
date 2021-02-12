@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const user_url = 'http://localhost:3000/api/user';
+const history_url = 'http://localhost:3000/api/history';
 
 class UserService{
     /* POST users */
@@ -44,6 +45,17 @@ class UserService{
                 const res = await axios.get(user_url + '/cart/' + user_id);
                 const data = res.data;
                 resolve(data);
+            }catch(err){
+                reject(err);
+            }
+        });
+    }
+
+    static make_purchase(user_name, book_title){
+        return new Promise(async (resolve, reject) => {
+            try{
+                const res = await axios.post(history_url + '/purchase', {book_title: book_title, user_name: user_name,  purchase_date: new Date});
+                resolve(res.data);
             }catch(err){
                 reject(err);
             }

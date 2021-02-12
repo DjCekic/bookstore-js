@@ -5,6 +5,8 @@
             <router-link :to="'/books/' + book._id" tag="img" :src="'/book_covers/' + book.book_cover" style="width: 100px; height: 157%; float: left;"/>
             <h4 style="padding-left: 50%; padding-top: 5%;">{{book.title}}</h4>
         </div>
+         <!-- <button class="btn" onclick="add_history">&#128722;</button> -->
+         <button v-on:click="add_history">Purchase</button>
     </div>
 
 </template>
@@ -25,6 +27,18 @@ export default {
                     this.books = await UserService.get_cart(user.id);
                 }catch(err){err}
                 
+            }
+        },
+        async add_history(){
+            let user = this.$cookies.get('user');
+            if(user){
+                try{
+                    var i;
+                    for(i = 0; i < this.books.length; i++){
+                        await UserService.make_purchase(user.username, this.books[i].title);
+                        
+                    }
+                }catch(err){err}
             }
         }
     },
