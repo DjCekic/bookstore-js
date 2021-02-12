@@ -38,6 +38,7 @@ export default {
                         await UserService.make_purchase(user.username, this.books[i].title);
                         
                     }
+                    
                 }catch(err){err}
             }
         }
